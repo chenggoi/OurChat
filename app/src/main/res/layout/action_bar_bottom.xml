@@ -10,16 +10,17 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/chat_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/chat_image"
             android:background="@drawable/button_chat_up"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_below="@id/chat_image"
-            android:text="chat"/>
+            android:gravity="center"
+            android:text="@string/chat_text"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -27,6 +28,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
+        <ImageView
+            android:id="@+id/contacts_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_contact_up"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contacts_image"
+            android:gravity="center"
+            android:text="@string/contact_text"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -34,6 +47,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
+        <ImageView
+            android:id="@+id/discover_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_discover_up"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/discover_image"
+            android:gravity="center"
+            android:text="@string/discover_text"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -41,5 +66,17 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
+        <ImageView
+            android:id="@+id/mysetting_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_mysetting_up"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mysetting_image"
+            android:gravity="center"
+            android:text="@string/me_text"/>
     </RelativeLayout>
 </LinearLayout>

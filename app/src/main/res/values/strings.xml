@@ -1,6 +1,45 @@
 <resources>
     <string name="app_name">Ourchat</string>
 
-    <string name="login_text">Login</string>
-    <string name="register_text">Register</string>
+    <string name="login_text">登录</string>
+    <string name="register_text">注册</string>
+
+    <string name="chat_text">聊天</string>
+    <string name="contact_text">联系人</string>
+    <string name="discover_text">发现</string>
+    <string name="me_text">我</string>
+
+    <string name="moment_text">朋友圈</string>
+    <string name="scan_text">扫一扫</string>
+    <string name="shake_text">摇一摇</string>
+
+    <string name="photo_text">相册</string>
+    <string name="collection_text">收藏</string>
+    <string name="setting_text">设置</string>
+    <string name="expression_text">表情</string>
+
+    <string name="avatar_text">头像</string>
+    <string name="name_text">名字</string>
+    <string name="account_text">账号</string>
+    <string name="qr_code_text">我的二维码</string>
+    <string name="address_text">我的地址</string>
+    <string name="sex_text">性别</string>
+    <string name="location_text">地区</string>
+    <string name="private_sign_text">个性签名</string>
+
+    <string name="back_text">返回</string>
+    <string name="chat_information_text">聊天信息</string>
+    <string name="group_name_text">群聊名称</string>
+    <string name="group_qr_code_text">群二维码</string>
+    <string name="group_notice_text">群公告</string>
+    <string name="news_no_disturb">消息免打扰</string>
+    <string name="chat_top">置顶聊天</string>
+    <string name="save_to_contacts">保存到通讯录</string>
+    <string name="my_nik_name">我在本群的昵称</string>
+    <string name="show_group_nik_name">显示群成员昵称</string>
+    <string name="chat_file">聊天文件</string>
+    <string name="search_chat_file">查找聊天内容</string>
+    <string name="set_chat_background">设置当前聊天背景</string>
+
+
 </resources>
