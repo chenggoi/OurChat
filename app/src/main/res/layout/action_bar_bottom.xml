@@ -2,21 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bottom_bar_bg"
     android:orientation="horizontal">
 
 
     <RelativeLayout
+        android:id="@+id/chat_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <ImageView
             android:id="@+id/chat_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_chat_up"/>
+            android:layout_width="48dp"
+            android:layout_height="42dp"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/button_chat_up"/>
 
         <TextView
+            android:id="@+id/chat_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/chat_image"
@@ -25,17 +30,21 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/contacts_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <ImageView
             android:id="@+id/contacts_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_contact_up"/>
+            android:layout_width="48dp"
+            android:layout_height="42dp"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/button_contact_up"/>
 
         <TextView
+            android:id="@+id/contacts_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/contacts_image"
@@ -44,17 +53,21 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/discover_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <ImageView
             android:id="@+id/discover_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_discover_up"/>
+            android:layout_width="48dp"
+            android:layout_height="42dp"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/button_discover_up"/>
 
         <TextView
+            android:id="@+id/discover_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/discover_image"
@@ -63,17 +76,21 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mysetting_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <ImageView
             android:id="@+id/mysetting_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_mysetting_up"/>
+            android:layout_width="48dp"
+            android:layout_height="42dp"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/button_mysetting_up"/>
 
         <TextView
+            android:id="@+id/mysetting_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/mysetting_image"

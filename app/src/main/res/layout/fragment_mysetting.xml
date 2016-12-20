@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/divider_bg_grey"
+    android:background="@color/fragment_bg"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -99,11 +99,12 @@
             android:src="@drawable/button_right"/>
     </RelativeLayout>
 
-    <View
-    android:layout_width="match_parent"
-    android:layout_height="2dp"
-    android:layout_marginLeft="10dp"
-    android:background="@color/divider_bg_grey"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/text_color_white"
+        android:paddingLeft="10dp"
+        android:src="@color/divider_bg_grey"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -140,11 +141,13 @@
             android:paddingTop="10dp"
             android:src="@drawable/button_right"/>
     </RelativeLayout>
-    <View
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/divider_bg_grey"/>
+        android:layout_height="1dp"
+        android:background="@color/text_color_white"
+        android:paddingLeft="10dp"
+        android:src="@color/divider_bg_grey"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

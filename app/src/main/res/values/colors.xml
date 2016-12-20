@@ -5,8 +5,10 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="text_color_white">#FAFAFA</color>
+    <color name="text_color_green">#4CAF50</color>
+    <color name="text_color_grey">#A0A0A0</color>
 
-    <color name="divider_bg_grey">#EEEEEE</color>
+    <color name="divider_bg_grey">#DADADA</color>
     <color name="divider_bg_green">#4CAF50</color>
 
     <color name="action_bar_bg">#212121</color>
@@ -16,4 +18,7 @@
 
     <color name="register_press_up">#FAFAFA</color>
     <color name="register_press_down">#EEEEEE</color>
+
+    <color name="bottom_bar_bg">#F3F3F3</color>
+    <color name="fragment_bg">#EEEEEE</color>
 </resources>

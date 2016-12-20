@@ -12,17 +12,6 @@
         <include layout="@layout/action_bar_title"/>
     </LinearLayout>
 
-
-    <FrameLayout
-        android:id="@+id/main_frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/action_bar_bottom"
-        android:layout_below="@id/action_bar_top">
-
-    </FrameLayout>
-
-
     <LinearLayout
         android:id="@+id/action_bar_bottom"
         android:layout_width="match_parent"
@@ -33,9 +22,17 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/action_bar_bg"/>
+            android:background="@color/divider_bg_grey"/>
 
         <include layout="@layout/action_bar_bottom"/>
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/main_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/action_bar_bottom"
+        android:layout_below="@id/action_bar_top">
+    </FrameLayout>
 
 </RelativeLayout>
