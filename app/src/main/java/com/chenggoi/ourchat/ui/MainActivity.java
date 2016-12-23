@@ -6,18 +6,21 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chenggoi.ourchat.R;
 import com.chenggoi.ourchat.util.Global;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by chenggoi on 16-12-6.
  * MainActivity contains four fragment.
  */
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity {
 
     FragmentManager fragmentManager;
     Fragment chatListFragment;
@@ -26,26 +29,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Fragment mySettingFragment;
     Fragment currentFragment;
 
-    RelativeLayout chatLayout;
-    RelativeLayout contactsLayout;
-    RelativeLayout discoverLayout;
-    RelativeLayout mySettingLayout;
-
+    // init bottom bar
+    @BindView(R.id.chat_image)
     ImageView chatImage;
+    @BindView(R.id.contacts_image)
     ImageView contactsImage;
+    @BindView(R.id.discover_image)
     ImageView discoverImage;
+    @BindView(R.id.mysetting_image)
     ImageView mySettingImage;
 
+    @BindView(R.id.chat_text)
     TextView chatText;
+    @BindView(R.id.contacts_text)
     TextView contactsText;
+    @BindView(R.id.discover_text)
     TextView discoverText;
+    @BindView(R.id.mysetting_text)
     TextView mySettingText;
 
+    // init action bar
+    @BindView(R.id.action_bar)
     Toolbar topActionToolBar;
+    @BindView(R.id.action_bar_center_title)
     TextView actionbarTitleText;
 
-    @Override
-    public void onClick(View view) {
+    @OnClick({R.id.chat_layout, R.id.contacts_layout, R.id.discover_layout, R.id.mysetting_layout})
+    public void onBottonClick(View view) {
         // Users may click the bottom button to change the fragment.
         switch (view.getId()) {
             case R.id.chat_layout:
@@ -81,10 +91,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         // Use FragmentManager to control fragments.
         fragmentManager = getFragmentManager();
 
+        //init fragments
         chatListFragment = new ChatListFragment();
         contactsListFragment = new ContactListFragment();
         discoverFragment = new DiscoverFragment();
@@ -99,31 +111,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         currentFragment = chatListFragment;
 
-        chatLayout = (RelativeLayout) findViewById(R.id.chat_layout);
-        contactsLayout = (RelativeLayout) findViewById(R.id.contacts_layout);
-        discoverLayout = (RelativeLayout) findViewById(R.id.discover_layout);
-        mySettingLayout = (RelativeLayout) findViewById(R.id.mysetting_layout);
-
-        chatLayout.setOnClickListener(this);
-        contactsLayout.setOnClickListener(this);
-        discoverLayout.setOnClickListener(this);
-        mySettingLayout.setOnClickListener(this);
-
-        chatImage = (ImageView) findViewById(R.id.chat_image);
-        contactsImage = (ImageView) findViewById(R.id.contacts_image);
-        discoverImage = (ImageView) findViewById(R.id.discover_image);
-        mySettingImage = (ImageView) findViewById(R.id.mysetting_image);
-
-        chatText = (TextView) findViewById(R.id.chat_text);
-        contactsText = (TextView) findViewById(R.id.contacts_text);
-        discoverText = (TextView) findViewById(R.id.discover_text);
-        mySettingText = (TextView) findViewById(R.id.mysetting_text);
-
         chatImage.setImageResource(R.drawable.button_chat_down);
         chatText.setTextColor(chatText.getResources().getColor(R.color.text_color_green));
 
-        topActionToolBar = (Toolbar) findViewById(R.id.action_bar);
-        actionbarTitleText = (TextView) findViewById(R.id.action_bar_center_title);
         actionbarTitleText.setText(R.string.chat_text);
     }
 
