@@ -12,7 +12,6 @@ import com.chenggoi.ourchat.R;
 import com.chenggoi.ourchat.util.Global;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -55,7 +54,7 @@ public class MainActivity extends BaseActivity {
     TextView actionbarTitleText;
 
     @OnClick({R.id.chat_layout, R.id.contacts_layout, R.id.discover_layout, R.id.mysetting_layout})
-    public void onBottonClick(View view) {
+    public void onBottomClick(View view) {
         // Users may click the bottom button to change the fragment.
         switch (view.getId()) {
             case R.id.chat_layout:
@@ -91,7 +90,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
         // Use FragmentManager to control fragments.
         fragmentManager = getFragmentManager();

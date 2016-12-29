@@ -26,7 +26,86 @@ public class MainActivity extends BaseActivity {
     public void onBottonClick(View view) {
         // 根据view id来判断点击的哪个view从而做出相应的操作
     }
+}
 ```
+
+##[Bmob IM SDK](http://docs.bmob.cn/im/Android/b_developdoc/doc/index.html)
+
+- 注册消息接收器
+
+```java
+public class ChatMessageHandler extends BmobIMMessageHandler{
+
+    @Override
+    public void onMessageReceive(final MessageEvent event) {
+        //当接收到服务器发来的消息时，此方法被调用
+    }
+
+    @Override
+    public void onOfflineReceive(final OfflineMessageEvent event) {
+        //每次调用connect方法时会查询一次离线消息，如果有，此方法会被调用
+    }
+}
+```
+
+- 在BaseApplication中的onCreate方法中注册该Handler
+
+```
+public class BmobIMApplication extends Application{
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //NewIM初始化
+        BmobIM.init(this);
+        //注册消息接收器
+        BmobIM.registerDefaultMessageHandler(new ChatMessageHandler());
+    }
+}
+```
+
+- 通过user.signUp()方法进行用户注册，user.login()方法进行用户登录，并对该段代码的实现进行了封装，通过**LogInListener listener**将结果回调
+- 用户注册模块
+
+```
+        final User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.signUp(getContext(), new SaveListener() {
+            @Override
+            public void onSuccess() {
+                listener.done(getCurrentUser(), null);
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                listener.done(user, new BmobException(i, s));
+            }
+        });
+```
+
+- 用户登录模块
+
+```
+        final User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.login(getContext(), new SaveListener() {
+            @Override
+            public void onSuccess() {
+                listener.done(getCurrentUser(), null);
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                listener.done(user, new BmobException(i, s));
+            }
+        });
+```
+
+##BaseActivity
+
+- 重写**setContentView()**方法，加入butter knife的**ButterKnife.bind(this)**方法，省去其他activity频繁写此方法
 
 ##MainActivity
 
