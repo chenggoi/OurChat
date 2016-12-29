@@ -5,6 +5,7 @@ package com.chenggoi.ourchat.util;
  */
 
 public class Global {
+    // Fragment tag
     public static final String CHAT_TAG = "CHAT";
     public static final String CONTACTS_TAG = "CONTACT";
     public static final String DISCOVER_TAG = "DISCOVER";

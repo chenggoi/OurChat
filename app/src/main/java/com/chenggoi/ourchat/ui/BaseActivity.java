@@ -15,6 +15,7 @@ public class BaseActivity extends Activity {
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
+        // add for bind butter knife
         ButterKnife.bind(this);
         initView();
     }
@@ -22,6 +23,7 @@ public class BaseActivity extends Activity {
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
+        // add for bind butter knife
         ButterKnife.bind(this);
         initView();
     }

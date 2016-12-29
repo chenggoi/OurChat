@@ -12,6 +12,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by chenggoi on 16-12-29.
+ * 用户数据相关操作，包括登陆，注册，注销，获取已经登陆的用户等
  */
 
 public class UserUtil {
@@ -24,6 +25,7 @@ public class UserUtil {
 
     }
 
+    // 获取UserUtil实例
     public static UserUtil getInstance() {
         return userUtil;
     }
@@ -32,7 +34,11 @@ public class UserUtil {
         return BaseApplication.getInstance();
     }
 
+    /**
+     * 用户登录账号
+     */
     public void userLogin(String username, String password, final LogInListener listener) {
+        // 检测用户名和密码是否为空
         if (TextUtils.isEmpty(username)) {
             listener.internalDone(new BmobException(CODE_NULL, "请填写用户名"));
         }
@@ -56,10 +62,14 @@ public class UserUtil {
 
     }
 
+    // 用户注销账号
     public void userLogOut() {
         BmobUser.logOut(getContext());
     }
 
+    /**
+     * 用户注册账号
+     */
     public void userRegister(String username, String password, final LogInListener listener) {
         if (TextUtils.isEmpty(username)) {
             listener.internalDone(new BmobException(CODE_NULL, "请填写用户名"));
@@ -84,6 +94,7 @@ public class UserUtil {
 
     }
 
+    // 获取当前已登陆的账号信息
     public User getCurrentUser() {
         return BmobUser.getCurrentUser(getContext(), User.class);
     }

@@ -16,6 +16,7 @@ import cn.bmob.v3.listener.LogInListener;
 
 /**
  * Created by chenggoi on 16-12-29.
+ * 用户登录界面
  */
 
 public class LoginActivity extends BaseActivity {
