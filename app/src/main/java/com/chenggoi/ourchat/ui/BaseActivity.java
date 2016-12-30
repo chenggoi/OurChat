@@ -2,8 +2,10 @@ package com.chenggoi.ourchat.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.ButterKnife;
 
@@ -28,11 +30,18 @@ public class BaseActivity extends Activity {
         initView();
     }
 
-    protected void startActivity(Class<? extends Activity> c) {
+    protected void startActivity(Class<? extends Activity> c, Bundle bundle, boolean isFinish) {
         Intent intent = new Intent(BaseActivity.this, c);
         startActivity(intent);
+        if (isFinish) {
+            finish();
+        }
     }
 
     protected void initView() {
+    }
+
+    protected void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

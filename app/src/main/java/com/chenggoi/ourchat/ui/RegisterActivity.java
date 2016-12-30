@@ -1,6 +1,5 @@
 package com.chenggoi.ourchat.ui;
 
-import android.os.Bundle;
 import android.widget.EditText;
 
 import com.chenggoi.ourchat.R;
@@ -15,20 +14,18 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 
 /**
- * Created by chenggoi on 16-12-29.
- * 用户登录界面
+ * Created by chenggoi on 16-12-30.
  */
 
-public class LoginActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity {
+    @BindView(R.id.register_user_name)
+    EditText username;
+    @BindView(R.id.register_user_password)
+    EditText password;
 
-    @BindView(R.id.login_user_id_text)
-    EditText userIdText;
-    @BindView(R.id.login_user_password_text)
-    EditText userPasswordText;
-
-    @OnClick(R.id.user_login_button)
-    public void onLoginClick() {
-        UserUtil.getInstance().userLogin(userIdText.getText().toString(), userPasswordText.getText().toString(), new LogInListener() {
+    @OnClick(R.id.user_register_button)
+    public void onRegisterClick() {
+        UserUtil.getInstance().userRegister(username.getText().toString(), password.getText().toString(), new LogInListener() {
             @Override
             public void done(Object o, BmobException e) {
                 if (e == null) {
@@ -42,9 +39,4 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-    }
 }

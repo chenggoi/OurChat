@@ -33,12 +33,18 @@
             android:value="a5815e6da473c02f285f1f9a082b44c1"/>
 
         <activity android:name=".ui.BaseActivity"/>
-        <activity android:name=".ui.MainActivity">
+
+        <activity android:name=".ui.LoginActivity"/>
+
+        <activity android:name=".ui.RegisterActivity"/>
+
+        <activity android:name=".ui.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.MainActivity"/>
 
         <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver">
             <intent-filter>
