@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.chenggoi.ourchat.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by chenggoi on 16-12-6.
  * Contacts list UI.
@@ -23,6 +25,8 @@ public class ContactListFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_contacts, container, false);
+        // butter knife bind view in fragment.
+        ButterKnife.bind(this, v);
         return v;
     }
 }

@@ -2,11 +2,15 @@ package com.chenggoi.ourchat.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.chenggoi.ourchat.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by chenggoi on 16-12-6.
@@ -14,6 +18,8 @@ import com.chenggoi.ourchat.R;
  */
 
 public class ChatListFragment extends BaseFragment {
+    @BindView(R.id.chat_list_recycler_view)
+    RecyclerView chatListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,7 @@ public class ChatListFragment extends BaseFragment {
 
         // Bind layout to fragment
         View v = inflater.inflate(R.layout.fragment_chat, container, false);
+        ButterKnife.bind(this, v);
         return v;
     }
 

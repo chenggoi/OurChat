@@ -32,6 +32,9 @@ public class BaseActivity extends Activity {
 
     protected void startActivity(Class<? extends Activity> c, Bundle bundle, boolean isFinish) {
         Intent intent = new Intent(BaseActivity.this, c);
+        if (bundle != null) {
+            intent.putExtra(getPackageName(), bundle);
+        }
         startActivity(intent);
         if (isFinish) {
             finish();

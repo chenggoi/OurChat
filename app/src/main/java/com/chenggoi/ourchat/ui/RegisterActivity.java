@@ -1,5 +1,6 @@
 package com.chenggoi.ourchat.ui;
 
+import android.os.Bundle;
 import android.widget.EditText;
 
 import com.chenggoi.ourchat.R;
@@ -39,4 +40,9 @@ public class RegisterActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+    }
 }
