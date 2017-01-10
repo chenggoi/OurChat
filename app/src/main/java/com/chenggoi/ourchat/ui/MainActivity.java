@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity {
         fragmentManager = getFragmentManager();
 
         //init fragments
-        chatListFragment = new ChatListFragment();
+        chatListFragment = new ConversationListFragment();
         contactsListFragment = new ContactListFragment();
         discoverFragment = new DiscoverFragment();
         mySettingFragment = new MySettingFragment();
