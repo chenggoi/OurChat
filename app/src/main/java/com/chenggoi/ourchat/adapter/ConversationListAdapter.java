@@ -37,7 +37,7 @@ public class ConversationListAdapter extends RecyclerView.Adapter<ConversationLi
     // 创建一个新的view
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_conversation, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_conversation_list, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }

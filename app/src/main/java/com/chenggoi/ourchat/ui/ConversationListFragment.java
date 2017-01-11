@@ -23,7 +23,7 @@ import cn.bmob.newim.bean.BmobIMConversation;
  */
 
 public class ConversationListFragment extends BaseFragment {
-    @BindView(R.id.chat_list_recycler_view)
+    @BindView(R.id.conversation_list_recycler_view)
     RecyclerView mConversationListView;
 
     @Override
@@ -36,14 +36,14 @@ public class ConversationListFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Bind layout to fragment
-        View v = inflater.inflate(R.layout.fragment_chat, container, false);
+        View v = inflater.inflate(R.layout.fragment_conversation, container, false);
         ButterKnife.bind(this, v);
         // 设置RecyclerView的LayoutManager
         mConversationListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         final ConversationListAdapter adapter = new ConversationListAdapter();
         // 设置Adapter
         mConversationListView.setAdapter(adapter);
-        // 设置RecyclerView上Item的点击事件，由于RecyclerView不像ListView有原生的Item点击事件，所以需要自定义一个listener然后通过Adapter触发
+        // 设置RecyclerView上Item的点击事件，由于RecyclerView不像ListView有原生的Item点击事件，所以需要自定义一个listener然后通过Adapter触发回调
         adapter.setRecyclerViewListener(new onRecyclerViewListener() {
             @Override
             public void itemClick(int position) {
