@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="2dp"
         android:background="@drawable/bg_chat_list_time"
         android:text="11:11"
         android:textColor="@color/chat_list_time_tx"
@@ -42,7 +43,7 @@
             android:minWidth="80dp"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
-            android:paddingRight="30dp"
+            android:paddingRight="20dp"
             android:paddingTop="10dp"
             android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/>
     </RelativeLayout>
