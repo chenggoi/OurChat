@@ -10,6 +10,7 @@ import java.util.List;
 
 import cn.bmob.newim.bean.BmobIMConversation;
 import cn.bmob.newim.bean.BmobIMMessage;
+import cn.bmob.newim.bean.BmobIMMessageType;
 import cn.bmob.v3.BmobUser;
 
 /**
@@ -18,11 +19,13 @@ import cn.bmob.v3.BmobUser;
 
 public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<BmobIMMessage> messages;
+    ArrayList<BmobIMMessage> messages = new ArrayList<>();
     String mCurrentUID = "";
     BmobIMConversation conversation;
-    private int TYPE_SEND_TEXT = 0;
-    private int TYPE_RECEIVE_TEXT = 1;
+    private onRecyclerViewListener onRecyclerViewListener;
+
+    private final int TYPE_SEND_TEXT = 0;
+    private final int TYPE_RECEIVE_TEXT = 1;
 
     public ChatListAdapter(Context context, BmobIMConversation conversation) {
         try {
@@ -45,7 +48,10 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemViewType(int position) {
-
+        BmobIMMessage message = messages.get(position);
+        if (message.getMsgType().equals(BmobIMMessageType.TEXT.getType())) {
+            return message.getFromId().equals(mCurrentUID) ? TYPE_SEND_TEXT : TYPE_RECEIVE_TEXT;
+        }
         return super.getItemViewType(position);
     }
 
@@ -56,12 +62,20 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case TYPE_SEND_TEXT:
+                return new ChatSendViewHolder(parent, conversation, onRecyclerViewListener);
+            case TYPE_RECEIVE_TEXT:
+                return new ChatReceiveViewHolder(parent, conversation, onRecyclerViewListener);
+            default:
+                break;
+        }
         return null;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        ((BaseViewHolder) holder).bindData(messages.get(position));
     }
 
     @Override
@@ -69,4 +83,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return messages.size();
     }
 
+    public void setOnRecyclerViewListener(onRecyclerViewListener onRecyclerViewListener) {
+        this.onRecyclerViewListener = onRecyclerViewListener;
+    }
 }
