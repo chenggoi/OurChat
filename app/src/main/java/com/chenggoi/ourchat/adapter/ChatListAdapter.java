@@ -22,7 +22,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     ArrayList<BmobIMMessage> messages = new ArrayList<>();
     String mCurrentUID = "";
     BmobIMConversation conversation;
-    private onRecyclerViewListener onRecyclerViewListener;
+    private OnRecyclerViewListener onRecyclerViewListener;
 
     private final int TYPE_SEND_TEXT = 0;
     private final int TYPE_RECEIVE_TEXT = 1;
@@ -56,12 +56,8 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<Object> payloads) {
-        super.onBindViewHolder(holder, position, payloads);
-    }
-
-    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // 根据ViewType类型创建对应的VH实例
         switch (viewType) {
             case TYPE_SEND_TEXT:
                 return new ChatSendViewHolder(parent, conversation, onRecyclerViewListener);
@@ -83,7 +79,16 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return messages.size();
     }
 
-    public void setOnRecyclerViewListener(onRecyclerViewListener onRecyclerViewListener) {
+    public void setOnRecyclerViewListener(OnRecyclerViewListener onRecyclerViewListener) {
         this.onRecyclerViewListener = onRecyclerViewListener;
+    }
+
+    public int findPosition(BmobIMMessage message) {
+        for (int i = 0; i < messages.size(); i++) {
+            if (message.equals(messages.get(i))) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

@@ -23,9 +23,9 @@ import cn.bmob.newim.bean.BmobIMConversation;
 public class ConversationListAdapter extends RecyclerView.Adapter<ConversationListAdapter.ViewHolder> {
 
     private List<BmobIMConversation> conversations;
-    private onRecyclerViewListener listener;
+    private OnRecyclerViewListener listener;
 
-    public void setRecyclerViewListener(onRecyclerViewListener listener) {
+    public void setRecyclerViewListener(OnRecyclerViewListener listener) {
         this.listener = listener;
     }
 

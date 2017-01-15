@@ -26,7 +26,7 @@ public class ChatReceiveViewHolder extends BaseViewHolder {
     TextView cahtReceiveTime;
     private BmobIMConversation conversation;
 
-    public ChatReceiveViewHolder(ViewGroup group, BmobIMConversation conversation, onRecyclerViewListener listener) {
+    public ChatReceiveViewHolder(ViewGroup group, BmobIMConversation conversation, OnRecyclerViewListener listener) {
         super(group.getContext(), group, R.layout.item_chat_list_receive_msg, listener);
         this.conversation = conversation;
     }

@@ -1,6 +1,6 @@
 # OurChat
 
-##[Butter Knife](http://jakewharton.github.io/butterknife/)
+## [Butter Knife](http://jakewharton.github.io/butterknife/)
 
 - Field and method binding for Android views which uses annotation processing to generate boilerplate code for you.
 - 使用**@BindView(R.id.xx)**代替**findViewById()**
@@ -29,7 +29,7 @@
     }
 ```
 
-##[Bmob IM SDK](http://docs.bmob.cn/im/Android/b_developdoc/doc/index.html)
+## [Bmob IM SDK](http://docs.bmob.cn/im/Android/b_developdoc/doc/index.html)
 
 - 注册消息接收器
 
@@ -103,7 +103,70 @@
     });
 ```
 
-##RecyclerView
+- 获取当前所有的会话
+
+```java
+    conversations = BmobIM.getInstance().loadAllConversation();
+```
+
+- 然后使用obtain方法启动一个会话，用于打开会话聊天的过程
+
+```java
+    conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), (BmobIMConversation) bundle.getSerializable(Global.CONVERSION_MSG));
+```
+
+- 接收消息可以通过继承**MessageListHandler**，然后重写**onMessageReceive()**方法来实现
+
+```java
+    @Override
+    public void onMessageReceive(List<MessageEvent> list) {
+        for (int i = 0; i < list.size(); i++) {
+            MessageEvent event = list.get(i);
+            BmobIMMessage msg = event.getMessage();
+            if (conversation != null && event != null && conversation.getConversationId().equals(event.getConversation().getConversationId()) && !msg.isTransient()) {
+                if (adapter.findPosition(msg) < 0) {
+                    adapter.addMessage(msg);
+                    conversation.updateReceiveStatus(msg);
+                }
+                scrollToBottom();
+            }
+        }
+    }
+```
+
+- 发送消息可以通过调用**conversation**的**sendMessage()**方法实现,在发送时还要注册一个监听器来监听发送的过程
+
+```java
+    BmobIMMessage message = new BmobIMMessage();
+    message.setContent(text);
+    conversation.sendMessage(message, listener);
+```
+
+```java
+    /**
+     * 消息发送监听器
+     */
+    public MessageSendListener listener = new MessageSendListener() {
+        @Override
+        public void done(BmobIMMessage bmobIMMessage, BmobException e) {
+            // 发送完成
+            adapter.notifyDataSetChanged();
+            edit_input_msg.setText("");
+            scrollToBottom();
+        }
+
+        @Override
+        public void onStart(BmobIMMessage bmobIMMessage) {
+            // 开始发送
+            super.onStart(bmobIMMessage);
+            edit_input_msg.setText("");
+            scrollToBottom();
+            adapter.addMessage(bmobIMMessage);
+        }
+    };
+```
+
+## RecyclerView
 
 - 在Activity中获取这个RecyclerView，并声明LayoutManager与Adapter
 
@@ -198,18 +261,57 @@
     }
 ```
 
+- 当RecyclerView需要多种item布局的时候，如聊天的气泡界面，可以通过**实例化不同的ViewHolder**解决。根据viewType这一参数判断需要item的类型，从而实例化对应的ViewHolder
 
-##BaseActivity
+```java
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // 根据ViewType类型创建对应的VH实例
+        switch (viewType) {
+            case TYPE_SEND_TEXT:
+                return new ChatSendViewHolder(parent, conversation, onRecyclerViewListener);
+            case TYPE_RECEIVE_TEXT:
+                return new ChatReceiveViewHolder(parent, conversation, onRecyclerViewListener);
+            default:
+                break;
+        }
+        return null;
+    }
+```
+
+- 对于多个ViewHolder，想要绑定相应的数据需要在ViewHolder中完成，这样比较方便，因此可以创建一个抽象类BaseViewHolder，包含有bindData()抽象方法供子类继承并重写相应的绑定数据逻辑
+
+```java
+    @Override
+    public void bindData(Object o) {
+        BmobIMMessage message = (BmobIMMessage) o;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String msgContent = message.getContent();
+        String time = dateFormat.format(message.getCreateTime());
+        chatReceiveText.setText(msgContent);
+        cahtReceiveTime.setText(time);
+    }
+```
+
+- 然后再Adapter的**onBindViewHolder**方法中调用即可,通过强制类型转换将ViewHolder转换成BaseViewHolder类型，从而调用bindData方法
+
+```java
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ((BaseViewHolder) holder).bindData(messages.get(position));
+    }
+```
+
+## BaseActivity
 
 - 重写**setContentView()**方法，加入butter knife的**ButterKnife.bind(this)**方法，省去其他activity频繁写此方法
 
-##MainActivity
+## MainActivity
 
 - 通过**getFragmentManager()**获取FragmentManager实例，使用**fragmentManager.beginTransaction()**的**add()**、**hide()**和**show()**方法控制Fragment页面的显示和隐藏，避免使用**replace()**每次切换都要new一个Fragment实例
 - 由于动态添加Fragment使得每一个Fragment的resource id都是同一个id，因此需要通过为每个Fragment在add时添加的TAG加以区分
 - 用户通过点击bottom bar上的按钮切换Fragment页面，通过bottom bar上按钮的**layout id**判断目标页面，通过**currentFragment.getTag()**来判断是当前哪个Fragment页面，并对bottom bar上的按钮进行变色
 
 
-##Error
+## Error
 
 - gradle报**AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class...**错误，在build.gradle配置中添加**defaultConfig { ... ... multiDexEnabled true}**

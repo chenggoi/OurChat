@@ -26,7 +26,7 @@ public class ChatSendViewHolder extends BaseViewHolder {
 
     private BmobIMConversation conversation;
 
-    public ChatSendViewHolder(ViewGroup group, BmobIMConversation conversation, onRecyclerViewListener listener) {
+    public ChatSendViewHolder(ViewGroup group, BmobIMConversation conversation, OnRecyclerViewListener listener) {
         super(group.getContext(), group, R.layout.item_chat_list_send_msg, listener);
         this.conversation = conversation;
     }

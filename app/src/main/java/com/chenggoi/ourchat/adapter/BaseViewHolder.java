@@ -13,9 +13,9 @@ import butterknife.ButterKnife;
 
 public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
     private Context context;
-    public onRecyclerViewListener listener;
+    public OnRecyclerViewListener listener;
 
-    public BaseViewHolder(Context context, ViewGroup group, int layoutId, onRecyclerViewListener listener) {
+    public BaseViewHolder(Context context, ViewGroup group, int layoutId, OnRecyclerViewListener listener) {
         super(LayoutInflater.from(context).inflate(layoutId, group, false));
         this.context = context;
         this.listener = listener;

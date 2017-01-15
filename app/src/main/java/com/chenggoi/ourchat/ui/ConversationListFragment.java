@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.chenggoi.ourchat.R;
 import com.chenggoi.ourchat.adapter.ConversationListAdapter;
-import com.chenggoi.ourchat.adapter.onRecyclerViewListener;
+import com.chenggoi.ourchat.adapter.OnRecyclerViewListener;
 import com.chenggoi.ourchat.util.Global;
 
 import butterknife.BindView;
@@ -44,7 +44,7 @@ public class ConversationListFragment extends BaseFragment {
         // 设置Adapter
         mConversationListView.setAdapter(adapter);
         // 设置RecyclerView上Item的点击事件，由于RecyclerView不像ListView有原生的Item点击事件，所以需要自定义一个listener然后通过Adapter触发回调
-        adapter.setRecyclerViewListener(new onRecyclerViewListener() {
+        adapter.setRecyclerViewListener(new OnRecyclerViewListener() {
             @Override
             public void itemClick(int position) {
                 Bundle bundle = new Bundle();
